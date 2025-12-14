@@ -5,22 +5,23 @@ import './index.css';
 import AuthPage from './features/auth/AuthPage.tsx';
 import Dashboard from './features/dashboard/Dashboard.tsx';
 import SettingsPage from './features/settings/SettingsPage.tsx';
+import NotFoundPage from './features/dashboard/NotFoundPage.tsx';
 
 const router = createBrowserRouter([
    {
       path: '/auth',
       element: <AuthPage />,
-      errorElement: <div>404 Not Found</div>,
+      errorElement: <NotFoundPage />,
    },
    {
       path: '/',
       element: <Dashboard />,
-      errorElement: <div>404 Not Found</div>,
+      errorElement: <NotFoundPage />,
    },
    {
       path: '/settings',
       element: <SettingsPage />,
-      errorElement: <div>404 Not Found</div>,
+      errorElement: <NotFoundPage />,
    },
 ]);
 

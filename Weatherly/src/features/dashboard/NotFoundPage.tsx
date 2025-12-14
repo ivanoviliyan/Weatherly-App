@@ -1,9 +1,14 @@
-const NotFoundPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+import { Link } from 'react-router-dom';
 
-export default NotFoundPage
+const NotFoundPage = () => {
+   return (
+      <div>
+         <p>404 Not Found</p>
+         <Link to='/'>
+            <button>Go back</button>
+         </Link>
+      </div>
+   );
+};
+
+export default NotFoundPage;
