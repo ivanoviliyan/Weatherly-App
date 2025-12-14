@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import AuthPage from './features/auth/AuthPage.tsx';
-import Dashboard from './features/dashboard/Dashboard.tsx';
+import DashboardPage from './features/dashboard/DashboardPage.tsx';
 import SettingsPage from './features/settings/SettingsPage.tsx';
-import NotFoundPage from './features/dashboard/NotFoundPage.tsx';
+import NotFoundPage from './components/NotFoundPage.tsx';
 
 const router = createBrowserRouter([
    {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
    },
    {
       path: '/',
-      element: <Dashboard />,
+      element: <DashboardPage />,
       errorElement: <NotFoundPage />,
    },
    {
