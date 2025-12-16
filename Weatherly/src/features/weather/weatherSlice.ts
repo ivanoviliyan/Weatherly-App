@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { WeatherState, WeatherApiResponse, WeatherData } from './weatherTypes';
-
+import type {
+   WeatherState,
+   WeatherApiResponse,
+   WeatherData,
+} from './weatherTypes';
 const apiKey: string = import.meta.env.VITE_WEATHER_API_KEY;
 
 export const fetchWeatherByCity = createAsyncThunk<
@@ -50,6 +53,7 @@ const weatherSlice = createSlice({
    extraReducers: (builder) => {
       builder.addCase(fetchWeatherByCity.pending, (state) => {
          state.loading = true;
+         state.error = null;
       });
       builder.addCase(fetchWeatherByCity.fulfilled, (state, action) => {
          state.loading = false;
