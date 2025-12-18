@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import WeatherResult from '../../components/WeatherResult';
 import WeatherCard from '../../components/WeatherCard';
 import { addCity } from '../favorites/favoritesSlice';
+import Navigation from '../../components/Navigation';
 
 const DashboardPage = () => {
    const [cityValue, setCityValue] = useState<string>('');
@@ -47,6 +48,7 @@ const DashboardPage = () => {
 
    return (
       <>
+         <Navigation />
          <p>Dashboard</p>
          <form onSubmit={handleSubmit}>
             <input
