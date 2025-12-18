@@ -1,0 +1,29 @@
+.header {
+   background-color: #003459;
+   padding: 1rem;
+}
+
+.list {
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+   list-style: none;
+}
+
+.list li:first-child {
+   margin-right: auto;
+}
+
+.link a {
+   color: #ffffff;
+   text-decoration: none;
+   font-weight: bold;
+}
+
+.link {
+   transition: transform 0.2s ease;
+}
+
+.link:hover {
+   transform: scale(1.03);
+}

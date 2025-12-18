@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import WeatherResult from '../../components/WeatherResult';
 import WeatherCard from '../../components/WeatherCard';
 import { addCity } from '../favorites/favoritesSlice';
-import Navigation from '../../components/Navigation';
+import Navigation from '../../components/Navigation/Navigation';
 
 const DashboardPage = () => {
    const [cityValue, setCityValue] = useState<string>('');
