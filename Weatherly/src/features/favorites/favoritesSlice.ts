@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-
+import type {WeatherData} from '../weather/weatherTypes';
+ 
 interface FavoritesSlice {
-   cities: string[];
+   cities: WeatherData[];
 }
 
 const initialState: FavoritesSlice = {
@@ -13,10 +14,10 @@ const favoritesState = createSlice({
    name: 'favorites',
    initialState,
    reducers: {
-      addCity: (state, action: PayloadAction<string>) => {
+      addCity: (state, action: PayloadAction<WeatherData>) => {
          state.cities.push(action.payload);
       },
-      removeCity: (state, action: PayloadAction<string>) => {
+      removeCity: (state, action: PayloadAction<WeatherData>) => {
          state.cities = state.cities.filter((city) => city !== action.payload);
       },
    },

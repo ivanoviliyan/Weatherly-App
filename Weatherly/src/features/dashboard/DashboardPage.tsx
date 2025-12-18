@@ -3,41 +3,46 @@ import { fetchWeatherByCity } from '../weather/weatherSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import WeatherResult from '../../components/WeatherResult';
 import WeatherCard from '../../components/WeatherCard';
-import type { WeatherData } from '../weather/weatherTypes';
+import { addCity } from '../favorites/favoritesSlice';
 
 const DashboardPage = () => {
-   const [city, setCity] = useState<string>('');
-   const [favorites, setFavorites] = useState<WeatherData[]>([]);
+   const [cityValue, setCityValue] = useState<string>('');
    const dispatch = useAppDispatch();
    const { data, loading, error } = useAppSelector((state) => state.weather);
+   const cities = useAppSelector((state) => state.favorites.cities);
 
    useEffect(() => {
-      if (favorites.length === 0) return;
+      if (cities.length === 0) return;
 
       const interval = setInterval(() => {
-         favorites.forEach((weather) => {
+         cities.forEach((weather) => {
             dispatch(fetchWeatherByCity(weather.city));
          });
       }, 5 * 60 * 1000);
 
       return () => clearInterval(interval);
-   }, [favorites, dispatch]);
+   }, [cities, dispatch]);
 
    const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
 
-      if (!city.trim() || loading) return;
+      if (!cityValue.trim() || loading) return;
 
-      dispatch(fetchWeatherByCity(city.trim()));
+      dispatch(fetchWeatherByCity(cityValue.trim()));
+   };
+
+   const isCityAlreadyAdded = () => {
+      if (!data) return false;
+      return cities.some((item) => item.city === data.city);
    };
 
    const handleAddToFavorites = (e: React.FormEvent) => {
       e.preventDefault();
 
       if (!data) return;
-      if (favorites.some((f) => f.city === data.city)) return;
+      if (isCityAlreadyAdded()) return;
 
-      setFavorites((prev) => [...prev, data]);
+      dispatch(addCity(data));
    };
 
    return (
@@ -46,18 +51,18 @@ const DashboardPage = () => {
          <form onSubmit={handleSubmit}>
             <input
                type='text'
-               value={city}
-               onChange={(e) => setCity(e.target.value)}
+               value={cityValue}
+               onChange={(e) => setCityValue(e.target.value)}
                placeholder='Enter city'
             />
-            <button type='submit' disabled={!city.trim() || loading}>
+            <button type='submit' disabled={!cityValue.trim() || loading}>
                {loading ? 'Loading...' : 'Load Weather'}
             </button>
             <WeatherResult data={data} loading={loading} error={error} />
             {data ? (
                <button
                   onClick={handleAddToFavorites}
-                  disabled={favorites.some((f) => f.city === data.city)}
+                  disabled={isCityAlreadyAdded()}
                >
                   Add {data.city} to favorites
                </button>
@@ -65,7 +70,7 @@ const DashboardPage = () => {
          </form>
 
          <div className='favorites'>
-            {favorites.map((weather) => (
+            {cities.map((weather) => (
                <WeatherCard
                   key={weather.city}
                   city={weather.city}
