@@ -1,5 +1,5 @@
 .header {
-   background-color: #003459;
+   background-color: var(--prime-bg);
    padding: 1rem;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .link a {
-   color: #ffffff;
+   color: black;
    text-decoration: none;
    font-weight: bold;
 }

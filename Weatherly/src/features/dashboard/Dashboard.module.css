@@ -4,7 +4,7 @@
    padding: 0 1rem;
 
    form {
-      background-color: #007ea7;
+      background-color: var(--sec-bg);
       padding: 1rem;
       .header {
          font-size: 2rem;
@@ -24,7 +24,7 @@
 }
 
 .weatherResult {
-   margin: 1rem 0;
+   margin: 0.3rem 0;
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
@@ -33,17 +33,42 @@
    gap: 1rem;
    padding: 2rem 1rem;
 
-   background-color: #003459;
+   background-color: var(--sec-bg);
 
    button {
-      max-width: 40%;
-      background-color: #007ea7;
+      min-width: 400px;
+      background-color: var(--button);
    }
 }
 
 .favorites {
-   display: flex;
-   gap: 0.5rem;
-   background-color: white;
-   flex-wrap: wrap;
+   margin: 0 auto;
+   display: grid;
+   gap: 1rem;
+}
+
+section > h1 {
+   text-align: center;
+   padding: 1rem 0 1rem 0;
+}
+
+@media (min-width: 600px) {
+   .favorites {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+@media (min-width: 900px) {
+   .favorites {
+      grid-template-columns: repeat(3, 1fr);
+   }
+}
+@media (min-width: 1200px) {
+   .favorites {
+      grid-template-columns: repeat(4, 1fr);
+   }
+}
+@media (min-width: 1300px) {
+   .favorites {
+      grid-template-columns: repeat(5, 1fr);
+   }
 }

@@ -10,15 +10,15 @@ const getWeatherEmoji = (tempC: number): string => {
 
 const WeatherCard = ({ city, tempC, tempF }: WeatherData) => {
    return (
-      <section className={styles.container}>
-         <p className={styles.city}> ➡️ {city} 📍</p>
+      <div className={styles.container}>
+         <p className={styles.city}> {city} 📍</p>
          <p className={styles.tempC}>
             {getWeatherEmoji(tempC)} {tempC} °C
          </p>
          <p className={styles.tempF}>
             {getWeatherEmoji(tempC)} {tempF} °F
          </p>
-      </section>
+      </div>
    );
 };
 

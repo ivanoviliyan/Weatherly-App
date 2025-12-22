@@ -50,13 +50,13 @@ const DashboardPage = () => {
 
    return (
       <>
-         <section className={styles.page}>
+         <div className={styles.page}>
             <Navigation />
             <form onSubmit={handleSubmit} className={styles.form}>
                <p className={styles.header}>
                   {user ? `👋🏻 ${user.username}` : 'Welcome to Weatherly'}
                </p>
-               <section className={styles.search}>
+               <div className={styles.search}>
                   <input
                      type='text'
                      value={cityValue}
@@ -66,7 +66,7 @@ const DashboardPage = () => {
                   <button type='submit' disabled={!cityValue.trim() || loading}>
                      {loading ? 'Loading...' : 'Load Weather'}
                   </button>
-               </section>
+               </div>
             </form>
             {data && (
                <section className={styles.weatherResult}>
@@ -92,7 +92,7 @@ const DashboardPage = () => {
                   />
                ))}
             </section>
-         </section>
+         </div>
       </>
    );
 };
