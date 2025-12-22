@@ -19,7 +19,10 @@ const Navigation = () => {
             <ul className={styles.list}>
                <li className={styles.link}>
                   <Link to={'/'}>
-                     <FontAwesomeIcon icon={faCloudBolt} /> Weatherly
+                     <span className={styles.logo}>
+                        <FontAwesomeIcon icon={faCloudBolt} />{' '}
+                     </span>
+                     Weatherly
                   </Link>
                </li>
                {!isAuthenticated && (

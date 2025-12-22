@@ -1,4 +1,7 @@
-import type { WeatherData } from '../../features/weather/weatherTypes';
+import type {
+   WeatherData,
+   WeatherResultProps,
+} from '../../features/weather/weatherTypes';
 import styles from './WeatherResult.module.css';
 import { WeatherEmoji } from '../../features/weather/weatherTypes';
 import { addCity } from '../../features/favorites/favoritesSlice';
@@ -6,10 +9,10 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapLocation } from '@fortawesome/free-solid-svg-icons';
 
-const WeatherResult = () => {
-   const { data, loading, error } = useAppSelector((state) => state.weather);
+const WeatherResult = ({ data, loading, error }: WeatherResultProps) => {
    const cities = useAppSelector((state) => state.favorites.cities);
    const dispatch = useAppDispatch();
+
    const weatherEmoji = (data: WeatherData | null): string => {
       if (!data) return '';
 
@@ -28,12 +31,10 @@ const WeatherResult = () => {
 
    const handleAddToFavorites = (e: React.FormEvent) => {
       e.preventDefault();
-
-      if (!data) return;
-      if (isCityAlreadyAdded()) return;
-
+      if (!data || isCityAlreadyAdded()) return;
       dispatch(addCity(data));
    };
+
    return (
       <div className={styles.weatherCard}>
          {loading && <p>Loading...</p>}
@@ -54,7 +55,7 @@ const WeatherResult = () => {
                </button>
             </>
          ) : (
-            <p>{error}</p>
+            !loading && <p>{error}</p>
          )}
       </div>
    );

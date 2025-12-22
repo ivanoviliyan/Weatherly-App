@@ -36,3 +36,9 @@ export const WeatherEmoji = {
    PartlyCloudy: '⛅',
    Snow: '❄️',
 } as const;
+
+export interface WeatherResultProps {
+   data: WeatherData | null;
+   loading: boolean;
+   error: string | null;
+}

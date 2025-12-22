@@ -8,8 +8,8 @@
 
 :root {
    --button: #dac4f7;
-   --prime-bg: #d6f6dd;
-   --sec-bg: #ebd2b4;
+   --prime-bg: #00a8e8;
+   --sec-bg: #003459;
    --button-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
       rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
@@ -23,37 +23,30 @@
 }
 body {
    font-family: 'Lexend', sans-serif;
-   background-color: #b9dce9;
    width: 100vw;
    height: 100vh;
-   background-color: var(--prime-bg);
+   background: linear-gradient(90deg, #167a90 0%, #3a47d5 100%);
 }
 
 .page {
    max-width: 1600px;
    margin-inline: auto;
    padding: 0 1rem;
-
+   color: white;
+   font-weight: bold;
    form {
-      background-color: var(--sec-bg);
       padding: 1rem;
       .header {
          font-size: 2rem;
          text-align: center;
          margin-block: 1.5rem;
-         color: white;
+
          font-weight: bold;
       }
    }
 }
-.page {
-   max-width: 1600px;
-   margin-inline: auto;
-   padding: 0 1rem;
-}
 
 button {
-   background-color: var(--button);
    cursor: pointer;
    height: 3rem;
    border: none;
@@ -90,7 +83,5 @@ section,
 form {
    padding: 1rem;
    border-radius: 1rem;
-   box-shadow: var(--section-shadow);
-   background-color: var(--sec-bg);
    margin: 1rem 0;
 }

@@ -1,12 +1,6 @@
 import type { WeatherData } from '../../features/weather/weatherTypes';
 import styles from './WeatherCard.module.css';
-import { WeatherEmoji } from '../../features/weather/weatherTypes';
-
-const getWeatherEmoji = (tempC: number): string => {
-   if (tempC >= 20) return WeatherEmoji.Sunny;
-   if (tempC <= 0) return WeatherEmoji.Snow;
-   return WeatherEmoji.PartlyCloudy;
-};
+import { getWeatherEmoji } from '../../utils/utils';
 
 const WeatherCard = ({ city, tempC, tempF }: WeatherData) => {
    return (
