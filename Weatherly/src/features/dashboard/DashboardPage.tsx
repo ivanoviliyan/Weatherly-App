@@ -40,7 +40,7 @@ const DashboardPage = () => {
          <div className='page'>
             <Navigation />
             <form onSubmit={handleSubmit} className={styles.form}>
-               <p className={styles.header}>Welcome</p>
+               <p className={styles.header}>Dashboard</p>
                <div className={styles.search}>
                   <input
                      type='text'
@@ -62,12 +62,12 @@ const DashboardPage = () => {
                         error={error}
                      />
                   </section>
+                  {cities.length ? (
+                     <h2>
+                        <FontAwesomeIcon icon={faStar} /> Favorites
+                     </h2>
+                  ) : null}
                   <section className={styles.favorites}>
-                     {cities.length ? (
-                        <h2>
-                           <FontAwesomeIcon icon={faStar} /> Favorites
-                        </h2>
-                     ) : null}
                      {cities.map((weather) => (
                         <WeatherCard
                            key={weather.city}

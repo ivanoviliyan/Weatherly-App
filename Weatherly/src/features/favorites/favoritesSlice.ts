@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type {WeatherData} from '../weather/weatherTypes';
- 
+import type { WeatherData } from '../weather/weatherTypes';
+
 interface FavoritesSlice {
    cities: WeatherData[];
 }
@@ -15,7 +15,7 @@ const favoritesState = createSlice({
    initialState,
    reducers: {
       addCity: (state, action: PayloadAction<WeatherData>) => {
-         state.cities.push(action.payload);
+         state.cities.unshift(action.payload);
       },
       removeCity: (state, action: PayloadAction<WeatherData>) => {
          state.cities = state.cities.filter((city) => city !== action.payload);

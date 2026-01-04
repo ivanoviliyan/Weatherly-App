@@ -14,7 +14,8 @@
 
    list-style: none;
    font-size: 1.4rem;
-   border-top: 1px solid #ddd;
+   background-color: rgba(17, 17, 17, 0.45);
+   backdrop-filter: blur(4px);
 }
 
 li a {

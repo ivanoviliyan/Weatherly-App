@@ -29,6 +29,7 @@ body {
 }
 
 .page {
+   padding: 1rem;
    max-width: 1600px;
    height: 100%;
    margin-inline: auto;
