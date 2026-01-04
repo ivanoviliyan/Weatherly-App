@@ -30,8 +30,8 @@ body {
 
 .page {
    max-width: 1600px;
+   height: 100%;
    margin-inline: auto;
-   padding: 0 1rem;
    color: white;
    font-weight: bold;
    form {
@@ -77,11 +77,4 @@ input {
 
 input:focus {
    outline: none;
-}
-
-section,
-form {
-   padding: 1rem;
-   border-radius: 1rem;
-   margin: 1rem 0;
 }
